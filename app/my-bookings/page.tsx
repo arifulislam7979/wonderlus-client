@@ -28,7 +28,6 @@ const MyBookings = async () => {
     <section className="min-h-screen bg-gray-50 py-10 px-4 sm:px-6 lg:px-8">
       <div className="max-w-5xl mx-auto">
         
-        {/* Page Header */}
         <div className="mb-8">
           <h1 className="text-3xl sm:text-4xl font-serif text-gray-900 font-normal mb-1">
             My Bookings
