@@ -39,6 +39,7 @@ const EditDestination = ({ userData }: EditDestinationProps) => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const { _id, ...updatedData } = formData;
+    void _id;
 
     const token = await getTokenFromClient()
     const res = await fetch(

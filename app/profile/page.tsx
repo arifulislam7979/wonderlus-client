@@ -12,7 +12,7 @@ import {
   Camera,
   ShieldCheck,
 } from "lucide-react";
-import { useRef, useState, type ChangeEvent } from "react";
+import { useRef, useState } from "react";
 
 const Profile = () => {
   const { data: session, isPending } = useSession();
@@ -20,67 +20,12 @@ const Profile = () => {
 
   // 1. File input ke reference korar jonno useRef use kora holo
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const [previewImage, setPreviewImage] = useState<string | null>(null);
+  const [previewImage] = useState<string | null>(null);
 
   // 2. Camera button-e click korle hidden input-e trigger korbe
   const handleCameraClick = () => {
     fileInputRef.current?.click();
   };
-
-  // 3. File select korar por preview dekhanor logic
-  // const handleFileChange = async (e: ChangeEvent<HTMLInputElement>) => {
-  //   const file = e.target.files?.[0];
-  //   if (file) {
-  //     // ১. লোকাল প্রিভিউ দেখানোর জন্য
-  //     const imageUrl = URL.createObjectURL(file);
-  //     setPreviewImage(imageUrl);
-
-  //     // ২. ImgBB-তে আপলোড করার জন্য FormData তৈরি
-  //     const formData = new FormData();
-  //     formData.append("image", file);
-
-  //     try {
-  //       const apiKey = "YOUR_IMGBB_API_KEY"; // আপনার ImgBB API Key এখানে দিন
-  //       const response = await fetch(
-  //         `https://api.imgbb.com/1/upload?key=${apiKey}`,
-  //         {
-  //           method: "POST",
-  //           body: formData,
-  //         },
-  //       );
-
-  //       const data = await response.json();
-
-  //       if (data.success) {
-  //         const uploadedImageUrl = data.data.url;
-  //         console.log("Cloud Image URL:", uploadedImageUrl);
-
-  //         // ৩. MongoDB-তে সেভ করার জন্য ব্যাকএন্ডে রিকোয়েস্ট পাঠানো
-  //         const updateRes = await fetch(
-  //           "http://localhost:5000/users/update-image",
-  //           {
-  //             method: "PATCH",
-  //             headers: {
-  //               "Content-Type": "application/json",
-  //             },
-  //             body: JSON.stringify({
-  //               email: user?.email, // কোন ইউজারের ছবি আপডেট হবে তা বোঝাতে ইমেল পাঠানো হলো
-  //               imageUrl: uploadedImageUrl,
-  //             }),
-  //           },
-  //         );
-
-  //         const updateResult = await updateRes.json();
-  //         if (updateResult.modifiedCount > 0) {
-  //           console.log("Profile picture updated successfully in MongoDB!");
-  //           // চাইলে এখানে toast.success ব্যবহার করতে পারেন
-  //         }
-  //       }
-  //     } catch (error) {
-  //       console.error("Image upload or database update failed:", error);
-  //     }
-  //   }
-  // };
 
   if (isPending) {
     return (

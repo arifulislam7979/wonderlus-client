@@ -5,8 +5,6 @@ import { Destination } from "@/type";
 import EditDestination from "@/components/destination/EditDestination";
 import DeleteDestination from "@/components/destination/DeleteDastination";
 import BookNowButton from "@/components/BookNowButton";
-import { auth } from "@/lib/auth";
-import { headers } from "next/headers";
 import { getTokenFromServer } from "@/lib/getTokenServer";
 
 // Destination Type Definition

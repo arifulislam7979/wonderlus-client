@@ -37,7 +37,6 @@ export default function SignUpPage() {
           
         }
         if(error){
-            console.log(error);
             toast.error('Sign Up Failed')
         }
     }
